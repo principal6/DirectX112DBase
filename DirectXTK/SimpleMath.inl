@@ -3566,8 +3566,8 @@ inline bool Ray::Intersects(const Plane& plane, _Out_ float& Dist) const
     else
     {
         // t = -(dot(n,origin) + D) / dot(n,dir)
-        XMVECTOR Position = XMLoadFloat3(&position);
-        XMVECTOR v = XMPlaneDotNormal(p, Position);
+        XMVECTOR pos = XMLoadFloat3(&position);
+        XMVECTOR v = XMPlaneDotNormal(p, pos);
         v = XMVectorAdd(v, XMVectorSplatW(p));
         v = XMVectorDivide(v, nd);
         float dist = -XMVectorGetX(v);

@@ -27,7 +27,6 @@
 
 #include <exception>
 #include <stdint.h>
-#include <cassert>
 
 //
 // The core Direct3D headers provide the following helper C++ classes
@@ -64,8 +63,8 @@ namespace DirectX
                  _In_ UINT mapFlags)
             : mContext(context), mResource(resource), mSubresource(subresource)
         {
-            HRESULT m_hResult = mContext->Map(resource, subresource, mapType, mapFlags, this);
-            if (FAILED(m_hResult))
+            HRESULT hr = mContext->Map(resource, subresource, mapType, mapFlags, this);
+            if (FAILED(hr))
             {
                 throw std::exception();
             }
